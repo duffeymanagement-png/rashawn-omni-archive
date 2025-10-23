@@ -3,7 +3,10 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>OMNI-VERSE | Ruthless Gear Portal</title>
+    <!-- Load Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Load Tone.js for copyright-free sound generation -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/tone/14.8.49/Tone.min.js"></script>
     <style>
         /* --- CUSTOM CSS FOR COSMIC FUSION EFFECTS (No Copyright) --- */
         
@@ -67,6 +70,13 @@
             text-shadow: 0 0 10px #00b0ff, /* Chakra Blue base */
                          0 0 20px #ff5722; /* Fusion Red outer */
         }
+
+        /* --- INTERACTIVE CHAOS FILTER (VOLATILE EFFECT) --- */
+        .chaos-active {
+            /* Use filters for a brief, screen-wide distortion */
+            filter: hue-rotate(180deg) brightness(1.5) blur(1px) contrast(1.5);
+            transition: all 0.1s; /* Fast transition for a jarring effect */
+        }
     </style>
     <script>
         tailwind.config = {
@@ -77,22 +87,24 @@
                     },
                     colors: {
                         // High-Energy Fusion Palette
-                        'power-gold': '#ffcc00', // Super Saiyan/Jimmy Neutron Invention Glow
-                        'chakra-blue': '#00b0ff', // Naruto Chakra/Dexter's Lab Liquid
-                        'fusion-red': '#ff5722', // One Piece/Energy Blast
-                        'lab-gray': '#1c1f30', // Card Background
-                        'void-black': '#050510', // Deepest Background
+                        'power-gold': '#ffcc00', 
+                        'chakra-blue': '#00b0ff', 
+                        'fusion-red': '#ff5722', 
+                        'lab-gray': '#1c1f30', 
+                        'void-black': '#050510', 
                     }
                 }
             }
         }
     </script>
 </head>
+<!-- Outer container for starfield background and main content -->
 <div class="starfield"></div>
-<body class="bg-transparent text-white font-sans min-h-screen p-4 sm:p-8 relative z-0">
+<body id="mainBody" class="bg-transparent text-white font-sans min-h-screen p-4 sm:p-8 relative z-0">
 
     <div class="max-w-3xl mx-auto pt-10 pb-20">
         
+        <!-- Header Section (MAX POWER Theme) -->
         <header class="text-center mb-16 pt-4">
             <h1 class="text-5xl sm:text-6xl font-black mb-2 fusion-glow tracking-tighter chaotic-header text-power-gold">
                 <span class="text-fusion-red">THE</span> OMNI-VERSE ARCHIVE
@@ -102,7 +114,9 @@
             </p>
         </header>
 
+        <!-- Main Call to Action: The central focus of the page -->
         <div class="text-center mb-12">
+            <!-- Link set to the user's Streamlabs Merch Store URL -->
             <a id="merchLinkButton"
                 href="https://streamlabs.com/rashawnnc/merch" 
                 target="_blank"
@@ -113,16 +127,129 @@
                        border-8 border-fusion-red uppercase tracking-widest">
                 ACCESS THE ARMORY & SUPPORT THE MISSION
             </a>
+            <!-- The Warning message now has the subtle transmission error effect -->
             <p class="text-lg text-gray-200 mt-6 max-w-lg mx-auto p-4 bg-lab-gray/70 rounded-xl border border-chakra-blue transmission-warning">
                 **WARNING:** Direct portal link established. Every purchase funds the next chapter of the **Anti-Predator Initiative**.
             </p>
         </div>
 
+        <!-- --- INTERACTIVE PROTOCOLS CONTROL --- -->
+        <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4 mb-16">
+            <button id="audioButton"
+                class="px-6 py-3 text-lg font-bold text-power-gold bg-lab-gray rounded-full border-2 border-chakra-blue hover:bg-chakra-blue hover:text-void-black transition duration-300 shadow-lg flex items-center justify-center">
+                <span id="audioText">🔊 INITIATE SONIC TRANSMISSION</span>
+            </button>
+            <button id="chaosButton"
+                class="px-6 py-3 text-lg font-bold text-fusion-red bg-lab-gray rounded-full border-2 border-fusion-red hover:bg-fusion-red hover:text-void-black transition duration-300 shadow-lg flex items-center justify-center">
+                ⚡ INITIATE CHAOS BURST
+            </button>
+        </div>
+        <!-- --- END INTERACTIVE PROTOCOLS CONTROL --- -->
+
+        <!-- --- LORE VAULT SECTION (Inspired by Dark Fantasy & Surrealism) --- -->
+        <section class="mt-20 p-8 rounded-3xl bg-lab-gray border-4 border-fusion-red shadow-2xl">
+            <h2 class="text-4xl font-extrabold mb-4 text-center tracking-wider fusion-glow text-fusion-red border-b-4 border-chakra-blue pb-2">
+                THE LORE VAULT: ANTI-PREDATOR INITIATIVE
+            </h2>
+            <p class="text-lg text-gray-300 italic text-center mb-8">
+                *The Archive demands payment in blood and gold. Know what you fight for.*
+            </p>
+            
+            <div class="space-y-6 text-gray-300">
+                <div class="border-l-4 border-chakra-blue pl-4">
+                    <h3 class="text-2xl font-bold text-power-gold mb-1">PROTOCOL: RUTHLESS DIVISION</h3>
+                    <p>This faction operates outside the established interdimensional councils. We draw energy from the most **chaotic and unpredictable corners** of the multiverse, fusing high-tech armory blueprints with ancient, dark methodologies. Our mandate is simple: **Eliminate the targets by any means necessary.** Our existence is a transmission error.</p>
+                </div>
+
+                <div class="border-l-4 border-fusion-red pl-4">
+                    <h3 class="text-2xl font-bold text-power-gold mb-1">THE PREDATOR THREAT</h3>
+                    <p>They are the silent ones, the mind-leechers who drain essence across timelines. Our gear is forged from the residual energy of their victims, serving as both armor and remembrance. The price of this gear is the cost of war—a direct funnel into the systems designed to hunt, track, and **terminate the corruption.**</p>
+                </div>
+
+                <div class="border-l-4 border-power-gold pl-4">
+                    <h3 class="text-2xl font-bold text-power-gold mb-1">ARTIFACT ACQUISITION</h3>
+                    <p>The Omni-Verse Archive does not sell; it facilitates acquisition. Once you don the gear, you join the lineage of the Initiative. Be warned: the artifacts may contain **unstable psychic energy** and require a ruthless mind to wield their full power. Choose your weapon wisely.</p>
+                </div>
+            </div>
+        </section>
+        <!-- --- END LORE VAULT SECTION --- -->
+
+        <!-- Footer -->
         <footer class="text-center mt-24 text-gray-500 text-sm">
             &copy; 2025 Rashawnnc's Intergalactic Lab. Portal Integrity Verified.
         </footer>
 
     </div>
+    
+    <!-- JavaScript for Sonic Transmission (Tone.js) and Chaos Filter -->
+    <script>
+        // --- 1. SONIC TRANSMISSION LOGIC ---
+        let isAudioPlaying = false;
+        let loop;
+        const audioButton = document.getElementById('audioButton');
+        const audioText = document.getElementById('audioText');
+
+        audioButton.addEventListener('click', async () => {
+            if (Tone.context.state !== 'running') {
+                await Tone.start();
+            }
+
+            if (isAudioPlaying) {
+                // Stop the music
+                loop.stop();
+                Tone.Transport.stop();
+                audioText.textContent = '🔊 INITIATE SONIC TRANSMISSION';
+                isAudioPlaying = false;
+            } else {
+                // Define the sound components (808 Bass and Drone)
+                const bassSynth = new Tone.MembraneSynth({
+                    pitchDecay: 0.05, octaves: 2,
+                    envelope: { attack: 0.001, decay: 0.8, sustain: 0.01, release: 0.5 },
+                    volume: -10 
+                }).toDestination();
+                
+                const droneSynth = new Tone.DuoSynth({
+                    vibratoAmount: 0.5, vibratoRate: 5, portamento: 0.1,
+                    harmonicity: 1.001, volume: -20,
+                    voice0: { oscillator: { type: 'sine' }, envelope: { attack: 2, release: 5 } },
+                    voice1: { oscillator: { type: 'sine' }, envelope: { attack: 3, release: 6 } }
+                }).toDestination();
+                
+                droneSynth.triggerAttackRelease('C1', '8n');
+
+                let step = 0;
+                loop = new Tone.Loop(time => {
+                    const beat = step % 4;
+                    if (beat === 0) { bassSynth.triggerAttackRelease('C2', '4n', time); } 
+                    else if (beat === 2) { bassSynth.triggerAttackRelease('C2', '8n', time); }
+                    if (beat === 1 || beat === 3) { bassSynth.triggerAttackRelease('C3', '16n', time, 0.5); }
+
+                    step = (step + 1) % 4;
+                }, '4n').start(0);
+
+                Tone.Transport.bpm.value = 140;
+                Tone.Transport.start();
+
+                audioText.textContent = '🔇 SILENCE SONIC TRANSMISSION';
+                isAudioPlaying = true;
+            }
+        });
+
+        // --- 2. CHAOS BURST LOGIC ---
+        const chaosButton = document.getElementById('chaosButton');
+        const mainBody = document.getElementById('mainBody');
+
+        chaosButton.addEventListener('click', () => {
+            // Apply the chaotic filter class to the entire body
+            mainBody.classList.add('chaos-active');
+            chaosButton.disabled = true; // Prevent spamming the effect
+
+            // Remove the chaotic filter after 1000ms (1 second)
+            setTimeout(() => {
+                mainBody.classList.remove('chaos-active');
+                chaosButton.disabled = false;
+            }, 1000); 
+        });
+    </script>
 </body>
 </html>
-```eof
