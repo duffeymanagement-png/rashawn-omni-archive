@@ -16,9 +16,9 @@ INITIATE RUTHLESS CHECKOUT (MAX POWER!)
 
 This portal's design is a fusion of multi-verse forces, built to match the intensity of the gear.
 
-Anime MAX POWER: Incorporates elements from Dragon Ball Z (Super Saiyan Gold), Naruto (Chakra Blue), and the chaotic energy of sci-fi inventor concepts.
+High-Impact Chaos & Multi-Dimensional Energy: A hyper-fusion of MAX POWER aesthetics (Super Saiyan Gold, Chakra Blue) with the surreal, unpredictable, and uncompromising chaos found across various dimensional planes. This includes high-tech inventor concepts, dark fantasy grit, and the glitchy, neon-drenched visual noise of the Adult animation matrix.
 
-Trap & Memphis Influence: Utilizes sharp, industrial edges, heavy text effects, and an Icy Silver accent color to capture the powerful, uncompromising sound of the artists who inspired the new "Ruthless" aesthetic.
+Trap & Memphis Influence: Utilizes sharp, industrial edges, heavy text effects, and an Icy Silver accent color to capture the powerful, uncompromising sound that fuels the Ruthless Protocol.
 
 🛠️ FILE STRUCTURE
 
